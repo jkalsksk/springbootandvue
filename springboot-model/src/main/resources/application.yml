@@ -12,6 +12,9 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/springboot-vue?serviceTimezone=GTM%2B8&characterEncoding=UTF-8&useSSL=false
     username: root
     password: 123abc
+  # 懒加载
+  main:
+    lazy-initialization: true
 # mybatis-plus 的配置
 mybatis-plus:
   configuration:
