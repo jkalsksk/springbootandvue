@@ -14,6 +14,11 @@ import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 public class JacksonConfig {
 
 
+    /**
+     * 解决 雪花法 带来的 传输数据 的问题
+     * @param builder 判断
+     * @return 对应的mapper对象
+     */
     @Bean
     @Primary
     @ConditionalOnMissingBean(ObjectMapper.class)
