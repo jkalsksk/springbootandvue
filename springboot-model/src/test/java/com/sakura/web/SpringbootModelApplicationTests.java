@@ -8,6 +8,8 @@ class SpringbootModelApplicationTests {
 
     @Test
     void contextLoads() {
+
+        System.out.println("测试分支");
     }
 
 }
