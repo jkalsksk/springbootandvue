@@ -1,0 +1,21 @@
+# 配置端口号
+server:
+  port: 8081
+  servlet:
+    encoding:
+      force: true
+# 配置数据库连接
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/springboot-vue?serviceTimezone=GTM%2B8&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: 123abc
+# mybatis-plus 的配置
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      table-prefix: t_
