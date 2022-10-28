@@ -2,6 +2,10 @@ package com.sakura.web.common;
 
 import lombok.Data;
 
+/**
+ * 用来返回 响应 信息的 集合的
+ * @param <T>
+ */
 @Data
 public class Result<T> {
     private String code;
