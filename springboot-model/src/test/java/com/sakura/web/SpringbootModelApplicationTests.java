@@ -10,6 +10,8 @@ class SpringbootModelApplicationTests {
     void contextLoads() {
 
         System.out.println("测试分支");
+
+        System.out.println("hot-fix 分支");
     }
 
 }
