@@ -5,11 +5,9 @@ import com.sakura.web.common.Result;
 import com.sakura.web.pojo.User;
 import com.sakura.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -20,6 +18,11 @@ public class UserController {
     private UserService userService;
 
 
+    /**
+     * 根据 ID 删除 一个用户
+     * @param id 前端传过来的 真实ID
+     * @return 响应信息 以及 状态码
+     */
     @DeleteMapping("/delete/{id}")
     @Transactional
     public Result doDelete(@PathVariable Long id) {
@@ -34,6 +37,11 @@ public class UserController {
     }
 
 
+    /**
+     * 根据 ID 修改用户信息
+     * @param user 用户要修改的信息 实体
+     * @return 响应结果 以及 状态码
+     */
     @Transactional
     @PutMapping("/update")
     public Result doUpdate(@RequestBody User user) {
@@ -49,6 +57,11 @@ public class UserController {
     }
 
 
+    /**
+     * 新增用户
+     * @param user 前端传 过来的 用户实体 对象
+     * @return 状态码 以及 响应信息
+     */
     @Transactional
     @PostMapping("/save")
     public Result<?> save(@RequestBody User user) {
@@ -77,6 +90,13 @@ public class UserController {
             return Result.error("500", "服务器内存压力大 请稍后尝试!");
     }
 
+    /**
+     * 分页查询 所有数据
+     * @param currentPage 当前页码
+     * @param pageSize 要分页查询的 大小
+     * @param search 模糊查询的关键字
+     * @return 结果集 以及 状态码
+     */
     @GetMapping
     public Result<?> doList(@RequestParam(name = "pageNum") Integer currentPage,
                             @RequestParam("pageSize") Integer pageSize,
