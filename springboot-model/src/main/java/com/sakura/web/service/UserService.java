@@ -14,7 +14,6 @@ import java.util.List;
 public interface UserService extends IService<User> {
 
     Page<User> listPage(Integer currentPage, Integer pageSize, String search);
-
     boolean checkNickName(String name);
 
     boolean updateUserById(User user);

@@ -15,10 +15,10 @@
             style="max-width: 400px">
 
           <el-form-item label="用户名">
-            <el-input v-model="form.username" />
+            <el-input v-model="form.userName" />
           </el-form-item>
           <el-form-item label="密码">
-            <el-input v-model="form.password" show-password />
+            <el-input v-model="form.passWord" show-password />
           </el-form-item>
           <el-form-item >
             <el-button style="width: 100%;" type="primary" @click="login">登入</el-button>
@@ -42,13 +42,13 @@ export default {
   },
   methods:{
     login() {
-      request.post("/user/login", this.form).then(res => {
+      request.post("/account/login", this.form).then(res => {
         if (res.code === "0") {
           ElMessage.success(res.msg)
+          this.$router.push('/') // 登入成功 页面跳转
         } else {
           ElMessage.error(res.msg)
         }
-        this.$router.push('/') // 登入成功 页面跳转
       })
 
     }
