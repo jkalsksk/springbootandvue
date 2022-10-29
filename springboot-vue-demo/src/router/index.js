@@ -6,7 +6,7 @@ const routes = [
     path: '/',
     name: 'Layout',
     component: Layout,
-     redirect: '/home' ,
+    redirect: '/home' ,
     children: [
       {
         path: 'home',
@@ -20,6 +20,11 @@ const routes = [
     name: 'Login',
     component: () => import('@/views/Login')
   },
+  {
+    path: '/registered',
+    name: 'Registered',
+    component: () => import('@/views/Registered')
+  } ,
 ]
 
 const router = createRouter({

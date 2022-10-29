@@ -15,9 +15,20 @@ public class AccountController {
     private AccountService accountService;
 
     /**
+     *  注册用户功能
+     * @param account 用户对象 信息集合
+     * @return 结果信息
+     */
+    @RequestMapping("/registered")
+    public Result doRegistered(@RequestBody Account account) {
+        Result result = accountService.registeredAccount(account.getUserName(), account.getPassWord());
+
+        return result;
+    }
+
+    /**
      * 登入功能的控制器
-     * @param username 登入名
-     * @param password 登入密码
+     * @param account 用户信息 对象
      * @return 返回 结果信息
      */
     @PostMapping("/login")

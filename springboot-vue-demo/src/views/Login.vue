@@ -12,16 +12,17 @@
             size="large"
             :label-position="'right'"
             label-width="100px"
-            style="max-width: 400px">
+            style="max-width: 400px"
+            :rules="rules">
 
           <el-form-item label="用户名">
-            <el-input v-model="form.userName" />
+            <el-input v-model="form.userName" @blur="checkUserName"/>
           </el-form-item>
-          <el-form-item label="密码">
+          <el-form-item label="密码" prop="passWord">
             <el-input v-model="form.passWord" show-password />
           </el-form-item>
           <el-form-item >
-            <el-button style="width: 100%;" type="primary" @click="login">登入</el-button>
+            <el-button style="width: 100%;" type="primary" @click="login" @keyup.enter="login">登入</el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -36,8 +37,23 @@ import {ElMessage} from "element-plus";
 export default {
   name: "Login",
   data() {
+    let validatePass = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请输入密码'));
+      } else {
+        if (this.form.passWord !== '') {
+          this.$refs.ruleForm.validateField('请输入密码');
+        }
+        callback();
+      }
+    };
     return {
-      form: {}
+      form: {userName :"",passWord:""},
+      rules: {
+        pass: [
+          { validator: validatePass, trigger: 'blur' }
+        ],
+      }
     }
   },
   methods:{
@@ -51,6 +67,11 @@ export default {
         }
       })
 
+    },
+    checkUserName() {
+      if (this.form.userName.trim() === '') {
+
+      }
     }
   }
 }

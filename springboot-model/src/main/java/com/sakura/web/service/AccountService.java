@@ -19,4 +19,14 @@ public interface AccountService extends IService<Account> {
      *          || 登入失败 返回 状态码 -1 以及 错误提示
      */
     Result checkLoginAccount(String username, String password);
+
+    /**
+     * 用户注册
+     *      校验 登入的 用户名 是否存在
+     *      如果存在则 无法进行 注册  如果不存在 则 将 信息 写入到 数据库中
+     * @param username 用户名
+     * @param password 密码
+     * @return 注册成功返回 结果信息
+     */
+    Result registeredAccount(String username, String password);
 }
